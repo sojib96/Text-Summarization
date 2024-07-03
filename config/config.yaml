@@ -6,3 +6,7 @@ data_ingestion:
   local_data_path: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
 
+data_validation:
+  root_folder: artifacts/data_validation
+  status_file_path: artifacts/data_validation/status.txt
+  required_file: [train,validation,test , dataset_dict.json]

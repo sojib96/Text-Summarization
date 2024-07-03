@@ -7,3 +7,9 @@ class DataIngestionConfig:
     source_url: str
     local_data_path: str
     unzip_dir: Path
+
+@dataclass(frozen=True)
+class DataValidationConfig:
+    root_folder: Path
+    status_file_path: Path
+    required_file: list
