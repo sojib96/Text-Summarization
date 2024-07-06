@@ -15,7 +15,6 @@ class DataValidation:
         try:
             validation_status = False
             all_files = os.listdir(os.path.join('artifacts', 'data_ingestion', 'samsum_dataset'))
-            print(all_files)
             for files in all_files:
                 if files not in self.config.required_file:
                     validation_status = False

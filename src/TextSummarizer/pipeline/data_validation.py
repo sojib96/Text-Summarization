@@ -1,5 +1,6 @@
 from src.TextSummarizer.config.configuration import ConfigurationManager
 from src.TextSummarizer.conponents.data_validation import DataValidation
+
 class DataValidationTrainingPipeline:
     def __init__(self) -> None:
         pass
