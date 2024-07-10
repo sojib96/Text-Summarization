@@ -1,6 +1,6 @@
 from src.TextSummarizer.utils.common import read_yaml, create_directories
 from src.TextSummarizer.constants import *
-from src.TextSummarizer.entity.config_entity import DataIngestionConfig,DataValidationConfig, DataTransformationConfig,ModelTrainerConfig
+from src.TextSummarizer.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig,ModelTrainerConfig,ModelEvaluationConfig
 
 class ConfigurationManager:
     def __init__(self) -> None:
@@ -68,3 +68,17 @@ class ConfigurationManager:
             gradient_accumulation_steps = param.gradient_accumulation_steps,
         )
         return model_training_config
+    
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+        create_directories([config.root_folder])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_folder=config.root_folder,
+            model_path = config.model_path,
+            tokenizer_path = config.tokenizer_path,
+            test_data_path = config.test_data_path,
+            evaluations_result = config.evaluations_result
+        )
+
+        return model_evaluation_config

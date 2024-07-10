@@ -2,6 +2,7 @@ from src.TextSummarizer.pipeline.data_ingestion import DataIngestionTrainingPipe
 from src.TextSummarizer.pipeline.data_validation import DataValidationTrainingPipeline
 from src.TextSummarizer.pipeline.data_transformation import DataTransformationTrainingPipleline
 from src.TextSummarizer.pipeline.model_training import ModelTrainingPipleline
+from src.TextSummarizer.pipeline.model_evaluation import ModelEvaluationPipeline
 from src.TextSummarizer.logging.logger import logging 
 
 STAGE_NAME = "Data Ingestion stage"
@@ -27,8 +28,8 @@ except Exception as e:
 STAGE_NAME = "Data transformation stage"
 try:
    logging.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
-   data_validation = DataTransformationTrainingPipleline()
-   data_validation.main()
+   data_transformation = DataTransformationTrainingPipleline()
+   data_transformation.main()
    logging.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
 except Exception as e:
         logging.exception(e)
@@ -37,8 +38,19 @@ except Exception as e:
 STAGE_NAME = "Model training stage"
 try:
    logging.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
-   data_validation = ModelTrainingPipleline()
-   data_validation.main()
+   model_training = ModelTrainingPipleline()
+   model_training.main()
+   logging.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+        logging.exception(e)
+        raise e
+
+
+STAGE_NAME = "Model Evaluation stage"
+try:
+   logging.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
+   model_evaluation = ModelEvaluationPipeline()
+   model_evaluation.main()
    logging.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
 except Exception as e:
         logging.exception(e)

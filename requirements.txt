@@ -1,5 +1,6 @@
 transformers
 transformers[sentencepiece]
+PyTorch
 datasets
 sacrebleu 
 rouge_score 
